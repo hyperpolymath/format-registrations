@@ -1,0 +1,271 @@
+IANA Media Type Registration: application/vnd.k9+nickel
+=======================================================
+SPDX-License-Identifier: PMPL-1.0-or-later
+
+Prepared per RFC 6838 (Media Type Specifications and Registration Procedures)
+Submission URL: https://www.iana.org/form/media-types
+Date: 2026-03-16
+
+------------------------------------------------------------------------
+1.  Type name
+------------------------------------------------------------------------
+
+    application
+
+------------------------------------------------------------------------
+2.  Subtype name
+------------------------------------------------------------------------
+
+    vnd.k9+nickel
+
+    The "+nickel" structured syntax suffix indicates that the format's
+    validation layer is expressed in the Nickel configuration language
+    (https://nickel-lang.org).
+
+------------------------------------------------------------------------
+3.  Required parameters
+------------------------------------------------------------------------
+
+    N/A
+
+------------------------------------------------------------------------
+4.  Optional parameters
+------------------------------------------------------------------------
+
+    security-level
+        One of "kennel", "yard", or "hunt".  Indicates the maximum
+        execution privilege the component requests.  Defaults to
+        "kennel" if absent.  See Section 6 for security implications
+        of each level.
+
+    version
+        The K9 specification version the component conforms to.
+        Syntax: major.minor.patch (e.g., "1.0.0").
+
+------------------------------------------------------------------------
+5.  Encoding considerations
+------------------------------------------------------------------------
+
+    8-bit text (with binary note)
+
+    K9 files begin with the ASCII magic number "K9!" (0x4B 0x39 0x21)
+    followed by UTF-8 text.  The textual body uses YAML-like syntax
+    for the data layer and Nickel for the contract layer.  Opaque
+    payloads embedded via the pedigree system may contain arbitrary
+    binary data.  Line endings are LF (U+000A) by convention; parsers
+    MUST accept CR+LF (U+000D U+000A) as well.
+
+------------------------------------------------------------------------
+6.  Security considerations
+------------------------------------------------------------------------
+
+    K9 implements a tiered security model called the Leash System.
+    The security implications differ significantly by level:
+
+    Kennel level (Pure Data):
+        No execution.  Read-only.  The file contains only structured
+        data (metadata, content blocks, tags).  Processors MUST NOT
+        execute any content.  Safe to open in any environment,
+        including constrained devices (ASIC, Edge nodes, Minix).
+
+    Yard level (Validation Only):
+        Nickel contract evaluation is permitted.  Nickel is a
+        functionally pure language with no side effects, no filesystem
+        access, and no network access.  Evaluation verifies that the
+        component's data satisfies its declared type contracts.
+        Processors MUST evaluate Nickel contracts in a sandboxed
+        context.  No external resource access is permitted at this
+        level.
+
+    Hunt level (Full Execution):
+        Complete must-just-nickel triad execution is permitted.  Just
+        recipes MAY perform filesystem operations, invoke external
+        commands, and deploy components.  This level REQUIRES:
+
+          - A valid Ed25519 cryptographic signature over the
+            component's pedigree and recipes
+          - Explicit user consent before execution
+          - Podman-first containerised execution where available
+          - Fail-fast on signature verification failure
+
+        Unsigned or improperly signed Hunt-level components MUST be
+        rejected without execution.
+
+    Threat mitigations:
+
+      Malicious payload:  Crafted .k9 files with hostile Just recipes
+      are mitigated by the Hunt-level signature requirement.  Kennel
+      and Yard levels cannot execute recipes.
+
+      Contract isolation:  Even if a Just recipe is compromised, it
+      can only act on resources explicitly granted by the Nickel
+      contracts.
+
+      Complexity exhaustion:  Nickel evaluation is bounded.  Kennel
+      mode is available for environments where any evaluation is too
+      expensive.
+
+      Dependability collapse prevention:  The tiered model ensures
+      that security controls scale with the component's requested
+      privileges, preventing the common failure mode where excessive
+      security causes users to bypass all controls.
+
+    Privacy:  K9 pedigree metadata may contain author information,
+    version history, and deployment targets.  Implementations SHOULD
+    provide mechanisms to strip metadata before sharing.
+
+------------------------------------------------------------------------
+7.  Interoperability considerations
+------------------------------------------------------------------------
+
+    K9 is designed for multi-architecture permanence.  Components are
+    intended to be portable across:
+
+      - Linux (all architectures)
+      - Minix
+      - macOS
+      - Android
+      - Embedded systems and ASICs (Kennel level only)
+
+    The must-just-nickel triad provides environment detection (must
+    script), task orchestration (Just recipes), and typed validation
+    (Nickel contracts).  The "must" bootstrap script detects the host
+    environment and ensures prerequisites are available.
+
+    Interoperability at the data level (Kennel) requires only a YAML
+    parser and the K9! magic number detector.  Yard-level
+    interoperability requires a Nickel evaluator.  Hunt-level
+    interoperability requires Nickel, Just, and Ed25519 signature
+    verification.
+
+    The K9 format is self-describing: conforming repositories include
+    a pedigree.ncl file that declares the component's breed, version,
+    security level, and target architectures.
+
+------------------------------------------------------------------------
+8.  Published specification
+------------------------------------------------------------------------
+
+    K9 SVC Specification (v1.0.0-alpha):
+      https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc
+
+    K9 website:
+      https://k9-svc.net
+
+------------------------------------------------------------------------
+9.  Applications that use this media type
+------------------------------------------------------------------------
+
+    - K9 component validators and deployers
+    - CI/CD pipelines with self-validating configuration
+    - Container orchestration systems (Podman-first)
+    - Multi-architecture deployment tools
+    - Configuration management systems requiring typed contracts
+    - Edge and ASIC deployment (Kennel-level data components)
+    - The Contractile CLI system (must/trust/dust/intend/k9)
+
+    Reference implementation:
+      https://github.com/hyperpolymath/k9-svc
+
+------------------------------------------------------------------------
+10.  Fragment identifier considerations
+------------------------------------------------------------------------
+
+    Fragment identifiers for K9 documents use dot-separated paths into
+    the YAML/Nickel data structure.
+
+    Syntax:  #<path> where <path> is a dot-separated key sequence
+    (e.g., "metadata.name", "content.greeting")
+
+    Resolution:  Fragment MUST resolve to a key in the component's
+    data structure.  If no match, the user agent SHOULD ignore the
+    fragment.
+
+------------------------------------------------------------------------
+11.  Restrictions on usage
+------------------------------------------------------------------------
+
+    None.
+
+------------------------------------------------------------------------
+12.  Additional information
+------------------------------------------------------------------------
+
+    Deprecated alias names for this type:  None
+    Magic number(s):  "K9!" (0x4B 0x39 0x21) at offset 0
+    File extension(s):  .k9, .k9.ncl
+    Macintosh file type code(s):  None
+    Object Identifier(s) or OID(s):  None
+
+------------------------------------------------------------------------
+13.  Person & email address to contact for further information
+------------------------------------------------------------------------
+
+    Jonathan D.A. Jewell
+    j.d.a.jewell@open.ac.uk
+
+------------------------------------------------------------------------
+14.  Intended usage
+------------------------------------------------------------------------
+
+    COMMON
+
+------------------------------------------------------------------------
+15.  Author/Change controller
+------------------------------------------------------------------------
+
+    Jonathan D.A. Jewell
+    The Open University
+    j.d.a.jewell@open.ac.uk
+
+------------------------------------------------------------------------
+16.  Provisional registration? (standards tree only)
+------------------------------------------------------------------------
+
+    No.  (Vendor-tree registration.)
+
+------------------------------------------------------------------------
+Other comments
+------------------------------------------------------------------------
+
+    K9 (Self-Validating Components) treats files as active, self-
+    validating entities rather than passive data containers.  The
+    must-just-nickel triad enables environment-aware deployment:
+    environment detection via POSIX shell (must), task orchestration
+    via Just recipes, and typed validation via Nickel contracts.
+
+    The three-tier Leash System (Kennel/Yard/Hunt) ensures that
+    security controls are proportional to the component's requested
+    privileges, preventing dependability collapse while maintaining
+    strong guarantees for executable components.
+
+    The K9! magic number enables immediate kernel-level file type
+    identification without content inspection.
+
+------------------------------------------------------------------------
+References
+------------------------------------------------------------------------
+
+    [RFC6838]  Freed, N., Klensin, J., and T. Hansen, "Media Type
+               Specifications and Registration Procedures", BCP 13,
+               RFC 6838, DOI 10.17487/RFC6838, January 2013,
+               <https://www.rfc-editor.org/rfc/rfc6838>.
+
+    [K9-SPEC]  Jewell, J., "K9 SVC Specification v1.0.0-alpha", 2026,
+               <https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc>.
+
+    [NICKEL]   Tweag, "Nickel Language", 2024,
+               <https://nickel-lang.org>.
+
+    [JUST]     Casey, C., "Just Task Runner",
+               <https://just.systems>.
+
+------------------------------------------------------------------------
+Submission checklist
+------------------------------------------------------------------------
+
+    [_] Review all fields for accuracy
+    [_] Verify published specification links are accessible
+    [_] Submit via IANA web form at https://www.iana.org/form/media-types
+    [_] Monitor IANA email for review feedback
+    [_] Update specification with assigned media type upon approval

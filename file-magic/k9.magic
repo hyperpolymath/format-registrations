@@ -1,0 +1,66 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+#
+# file(1) magic pattern for K9 (Self-Validating Components) files
+#
+# K9 files are self-validating components using the must-just-nickel triad.
+# They begin with the ASCII magic number "K9!" (0x4B 0x39 0x21) and use
+# a tiered security model: Kennel (data only), Yard (validation), Hunt
+# (full execution with cryptographic signature).
+#
+# Specification: https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc
+# MIME type:     application/vnd.k9+nickel
+#
+# -------------------------------------------------------------------------
+# Submission instructions (astron/file on GitHub):
+#
+#   1. Fork https://github.com/file/file
+#   2. Add this content to magic/Magdir/k9 (new file)
+#   3. Run: make check
+#   4. Submit a pull request with:
+#        - This magic file
+#        - Test cases in tests/ (one per security level)
+#        - Update to doc/magic.man if needed
+#
+#   Maintainer: Christos Zoulas <christos@zoulas.com>
+#   Repository: https://github.com/file/file
+#   Mailing list: file@astron.com (for discussion before PR)
+# -------------------------------------------------------------------------
+
+# K9 magic number: "K9!" at byte offset 0
+# Priority 70 (high confidence due to unique magic number)
+
+0       string  K9!     K9 Self-Validating Component
+!:mime  application/vnd.k9+nickel
+!:ext   k9
+
+# Detect security level from content following the magic number
+# The security_level field appears in the pedigree/metadata block
+
+# Kennel level: pure data, no execution
+0       string  K9!
+>&0     regex/1024  security_level:\s*'?[Kk]ennel   K9 Self-Validating Component (Kennel level, data only)
+!:mime  application/vnd.k9+nickel
+!:ext   k9
+
+# Yard level: Nickel validation permitted
+0       string  K9!
+>&0     regex/1024  security_level:\s*'?[Yy]ard     K9 Self-Validating Component (Yard level, validation)
+!:mime  application/vnd.k9+nickel
+!:ext   k9
+
+# Hunt level: full execution with signature
+0       string  K9!
+>&0     regex/1024  security_level:\s*'?[Hh]unt     K9 Self-Validating Component (Hunt level, executable)
+!:mime  application/vnd.k9+nickel
+!:ext   k9
+
+# K9 Nickel contract files (.k9.ncl) -- pedigree.ncl pattern
+# These lack the K9! magic but contain K9-specific Nickel contracts
+0       regex/256   \AK9Pedigree\s*=\s*\{   K9 Nickel contract (pedigree definition)
+!:mime  application/vnd.k9+nickel
+!:ext   k9.ncl/ncl
+
+# K9 Nickel contract with SecurityLevel enum
+0       regex/256   SecurityLevel\s*=\s*\[\|\s*'Kennel  K9 Nickel contract (security model)
+!:mime  application/vnd.k9+nickel
+!:ext   k9.ncl/ncl

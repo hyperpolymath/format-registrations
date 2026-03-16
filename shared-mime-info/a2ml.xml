@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SPDX-License-Identifier: PMPL-1.0-or-later
+
+  shared-mime-info definition for A2ML (Attested Markup Language)
+
+  Specification: https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc
+  IANA registration: application/vnd.a2ml (vendor tree, RFC 6838)
+
+  Submission instructions (freedesktop.org shared-mime-info):
+
+    1. Fork https://gitlab.freedesktop.org/xdg/shared-mime-info
+    2. Add this file as data/a2ml.xml (or merge into freedesktop.org.xml.in)
+    3. Add test files under tests/:
+         tests/a2ml/test.a2ml         (basic A2ML document)
+         tests/a2ml/manifest.a2ml     (AI manifest variant)
+    4. Update tests/mime-detection to include:
+         test.a2ml              application/vnd.a2ml
+         manifest.a2ml          application/vnd.a2ml
+    5. Run: meson test
+    6. Submit a merge request to the main branch
+
+    Repository: https://gitlab.freedesktop.org/xdg/shared-mime-info
+    Spec: https://specifications.freedesktop.org/shared-mime-info-spec/
+
+  Local installation (for testing before upstream submission):
+
+    mkdir -p ~/.local/share/mime/packages
+    cp a2ml.xml ~/.local/share/mime/packages/
+    update-mime-database ~/.local/share/mime
+
+  System-wide installation:
+
+    sudo cp a2ml.xml /usr/share/mime/packages/
+    sudo update-mime-database /usr/share/mime
+-->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+  <mime-type type="application/vnd.a2ml">
+    <comment>A2ML Attested Markup Language document</comment>
+    <comment xml:lang="en">A2ML Attested Markup Language document</comment>
+    <comment xml:lang="de">A2ML Attested Markup Language Dokument</comment>
+    <comment xml:lang="fr">Document A2ML Attested Markup Language</comment>
+    <comment xml:lang="es">Documento A2ML Attested Markup Language</comment>
+    <comment xml:lang="ja">A2ML Attested Markup Language ドキュメント</comment>
+
+    <acronym>A2ML</acronym>
+    <expanded-acronym>Attested Markup Language</expanded-acronym>
+
+    <!-- File extension matching (primary detection method) -->
+    <glob pattern="*.a2ml"/>
+
+    <!-- AI manifest files have known names -->
+    <glob pattern="0-AI-MANIFEST.a2ml" weight="60"/>
+    <glob pattern="AI.a2ml" weight="60"/>
+
+    <!-- Content-based detection: @abstract directive at start of file -->
+    <magic priority="60">
+      <match value="@abstract:" type="string" offset="0"/>
+    </magic>
+
+    <!-- Content-based detection: heading followed by @abstract -->
+    <magic priority="50">
+      <match value="# " type="string" offset="0">
+        <match value="@abstract:" type="string" offset="2:512"/>
+      </match>
+    </magic>
+
+    <!-- Content-based detection: SPDX header with A2ML directives -->
+    <magic priority="40">
+      <match value="# SPDX-License-Identifier:" type="string" offset="0">
+        <match value="@abstract:" type="string" offset="20:1024"/>
+      </match>
+    </magic>
+
+    <!-- Sub-class of plain text (A2ML is human-readable) -->
+    <sub-class-of type="text/plain"/>
+
+    <!-- Generic icon hint -->
+    <generic-icon name="text-x-generic"/>
+  </mime-type>
+
+</mime-info>

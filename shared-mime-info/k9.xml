@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SPDX-License-Identifier: PMPL-1.0-or-later
+
+  shared-mime-info definition for K9 (Self-Validating Components)
+
+  Specification: https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc
+  IANA registration: application/vnd.k9+nickel (vendor tree, RFC 6838)
+  Magic number: "K9!" (0x4B 0x39 0x21) at byte offset 0
+
+  Submission instructions (freedesktop.org shared-mime-info):
+
+    1. Fork https://gitlab.freedesktop.org/xdg/shared-mime-info
+    2. Add this file as data/k9.xml (or merge into freedesktop.org.xml.in)
+    3. Add test files under tests/:
+         tests/k9/kennel.k9          (Kennel-level data component)
+         tests/k9/yard.k9            (Yard-level validation component)
+         tests/k9/hunt.k9            (Hunt-level executable component)
+         tests/k9/pedigree.k9.ncl    (Nickel contract file)
+    4. Update tests/mime-detection to include:
+         kennel.k9              application/vnd.k9+nickel
+         yard.k9                application/vnd.k9+nickel
+         hunt.k9                application/vnd.k9+nickel
+         pedigree.k9.ncl        application/vnd.k9+nickel
+    5. Run: meson test
+    6. Submit a merge request to the main branch
+
+    Repository: https://gitlab.freedesktop.org/xdg/shared-mime-info
+    Spec: https://specifications.freedesktop.org/shared-mime-info-spec/
+
+  Local installation (for testing before upstream submission):
+
+    mkdir -p ~/.local/share/mime/packages
+    cp k9.xml ~/.local/share/mime/packages/
+    update-mime-database ~/.local/share/mime
+
+  System-wide installation:
+
+    sudo cp k9.xml /usr/share/mime/packages/
+    sudo update-mime-database /usr/share/mime
+-->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+  <mime-type type="application/vnd.k9+nickel">
+    <comment>K9 Self-Validating Component</comment>
+    <comment xml:lang="en">K9 Self-Validating Component</comment>
+    <comment xml:lang="de">K9 selbstvalidierendes Komponent</comment>
+    <comment xml:lang="fr">Composant K9 auto-validant</comment>
+    <comment xml:lang="es">Componente K9 autovalidante</comment>
+    <comment xml:lang="ja">K9 自己検証コンポーネント</comment>
+
+    <acronym>K9</acronym>
+    <expanded-acronym>K9 Self-Validating Component</expanded-acronym>
+
+    <!-- Magic number detection: "K9!" at offset 0 (highest priority) -->
+    <magic priority="70">
+      <match value="K9!" type="string" offset="0"/>
+    </magic>
+
+    <!-- File extension matching -->
+    <glob pattern="*.k9"/>
+    <glob pattern="*.k9.ncl" weight="60"/>
+
+    <!-- Known K9 file names -->
+    <glob pattern="pedigree.ncl" weight="30"/>
+
+    <!-- Content-based detection for .k9.ncl files without magic number -->
+    <magic priority="40">
+      <match value="K9Pedigree" type="string" offset="0:256"/>
+    </magic>
+
+    <!-- Content-based detection: SecurityLevel enum in Nickel -->
+    <magic priority="35">
+      <match value="SecurityLevel" type="string" offset="0:512">
+        <match value="'Kennel" type="string" offset="0:1024"/>
+      </match>
+    </magic>
+
+    <!-- Generic icon hint -->
+    <generic-icon name="text-x-script"/>
+  </mime-type>
+
+</mime-info>

@@ -1,0 +1,182 @@
+{
+  "_comment": [
+    "SPDX-License-Identifier: PMPL-1.0-or-later",
+    "",
+    "Wikidata entity creation for K9 (Self-Validating Components)",
+    "",
+    "Submission instructions:",
+    "",
+    "  Option A: QuickStatements (recommended for new entities)",
+    "    1. Go to https://quickstatements.toolforge.org/",
+    "    2. Log in with your Wikidata account",
+    "    3. Paste the QuickStatements commands from the 'quickstatements' field below",
+    "    4. Click 'Do it'",
+    "    5. Record the resulting Q-number",
+    "",
+    "  Option B: Manual creation",
+    "    1. Go to https://www.wikidata.org/wiki/Special:NewItem",
+    "    2. Enter the label, description, and aliases",
+    "    3. Add each statement from the 'statements' section below",
+    "    4. Add sitelinks if applicable",
+    "",
+    "  Option C: Wikidata API (wbeditentity)",
+    "    Use the 'api_payload' field below with the Wikidata API",
+    "    Endpoint: https://www.wikidata.org/w/api.php?action=wbeditentity&new=item",
+    "",
+    "  Prerequisites:",
+    "    - A Wikidata account with autoconfirmed status (4+ days, 50+ edits)",
+    "    - Published specification at a stable URL",
+    "    - IANA media type registration (pending or approved)",
+    "",
+    "  Note on Q-numbers:",
+    "    Q125652882 is a placeholder for the developer entity.",
+    "    If Jonathan D.A. Jewell does not yet have a Wikidata item,",
+    "    create one first and substitute the correct Q-number."
+  ],
+
+  "quickstatements": [
+    "CREATE",
+    "LAST\tLen\t\"K9\"",
+    "LAST\tDen\t\"self-validating component format with Nickel contracts and tiered security levels\"",
+    "LAST\tAen\t\"K9 SVC\"",
+    "LAST\tAen\t\"K9 Self-Validating Components\"",
+    "LAST\tAen\t\".k9\"",
+    "LAST\tAen\t\"K9 format\"",
+    "",
+    "LAST\tP31\tQ235557\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
+    "LAST\tP31\tQ24451526\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
+    "LAST\tP178\tQ125652882\tS854\t\"https://github.com/hyperpolymath\"",
+    "LAST\tP1195\t\".k9\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
+    "LAST\tP1195\t\".k9.ncl\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
+    "LAST\tP1163\t\"application/vnd.k9+nickel\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
+    "LAST\tP856\t\"https://k9-svc.net\"\tS854\t\"https://k9-svc.net\"",
+    "LAST\tP1324\t\"https://github.com/hyperpolymath/k9-svc\"\tS854\t\"https://github.com/hyperpolymath/k9-svc\"",
+    "LAST\tP2748\t\"PMPL-1.0-or-later\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/LICENSE\"",
+    "LAST\tP571\t+2026-00-00T00:00:00Z/9\tS854\t\"https://github.com/hyperpolymath/k9-svc\"",
+    "LAST\tP348\t\"1.0.0-alpha\"\tS854\t\"https://github.com/hyperpolymath/k9-svc\"",
+    "LAST\tP4152\t\"4B3921\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\""
+  ],
+
+  "statements": {
+    "P31_instance_of": [
+      {
+        "value": "Q235557",
+        "value_label": "file format",
+        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      },
+      {
+        "value": "Q24451526",
+        "value_label": "configuration file format",
+        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      }
+    ],
+    "P178_developer": {
+      "value": "Q125652882",
+      "value_label": "Jonathan D.A. Jewell",
+      "note": "If Q-number does not exist for the developer, create a Wikidata item first or use a string value",
+      "fallback_string": "Jonathan D.A. Jewell",
+      "reference": "https://github.com/hyperpolymath"
+    },
+    "P1195_file_extension": [
+      {
+        "value": ".k9",
+        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      },
+      {
+        "value": ".k9.ncl",
+        "note": "Nickel contract variant",
+        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      }
+    ],
+    "P1163_media_type": {
+      "value": "application/vnd.k9+nickel",
+      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+    },
+    "P856_official_website": {
+      "value": "https://k9-svc.net",
+      "reference": "https://k9-svc.net"
+    },
+    "P1324_source_code_repository": {
+      "value": "https://github.com/hyperpolymath/k9-svc",
+      "reference": "https://github.com/hyperpolymath/k9-svc"
+    },
+    "P2748_SPDX_license_identifier": {
+      "value": "PMPL-1.0-or-later",
+      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/LICENSE"
+    },
+    "P571_inception": {
+      "value": "2026",
+      "precision": "year",
+      "reference": "https://github.com/hyperpolymath/k9-svc"
+    },
+    "P348_software_version": {
+      "value": "1.0.0-alpha",
+      "qualifier_P548": "development version",
+      "reference": "https://github.com/hyperpolymath/k9-svc"
+    },
+    "P4152_magic_number_hex": {
+      "value": "4B3921",
+      "note": "ASCII: K9! (0x4B 0x39 0x21) at byte offset 0",
+      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+    },
+    "P3381_character_encoding": {
+      "value": "Q193537",
+      "value_label": "UTF-8",
+      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+    },
+    "P2283_uses": [
+      {
+        "value_label": "Nickel (programming language)",
+        "note": "Look up Q-number for Nickel language; may need to create it",
+        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      },
+      {
+        "value_label": "Just (task runner)",
+        "note": "Look up Q-number for Just; may need to create it",
+        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      }
+    ],
+    "P527_has_parts": {
+      "note": "The K9 Leash System has three security levels. These could be modeled as separate items or qualifiers:",
+      "levels": [
+        {
+          "name": "Kennel",
+          "description": "Pure data level, no execution, safe in all environments"
+        },
+        {
+          "name": "Yard",
+          "description": "Validation level, Nickel contract evaluation permitted"
+        },
+        {
+          "name": "Hunt",
+          "description": "Full execution level, requires cryptographic signature"
+        }
+      ]
+    }
+  },
+
+  "labels": {
+    "en": "K9",
+    "de": "K9",
+    "fr": "K9",
+    "es": "K9",
+    "ja": "K9"
+  },
+
+  "descriptions": {
+    "en": "self-validating component format with Nickel contracts and tiered security levels",
+    "de": "selbstvalidierendes Komponentenformat mit Nickel-Vertr\u00e4gen und gestuften Sicherheitsebenen",
+    "fr": "format de composant auto-validant avec contrats Nickel et niveaux de s\u00e9curit\u00e9 \u00e9chelonn\u00e9s",
+    "es": "formato de componente autovalidante con contratos Nickel y niveles de seguridad escalonados",
+    "ja": "Nickel\u5951\u7d04\u3068\u968e\u5c64\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u30ec\u30d9\u30eb\u3092\u6301\u3064\u81ea\u5df1\u691c\u8a3c\u30b3\u30f3\u30dd\u30fc\u30cd\u30f3\u30c8\u5f62\u5f0f"
+  },
+
+  "aliases": {
+    "en": [
+      "K9 SVC",
+      "K9 Self-Validating Components",
+      ".k9",
+      "K9 format"
+    ]
+  }
+}

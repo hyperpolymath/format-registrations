@@ -1,0 +1,61 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+#
+# file(1) magic pattern for A2ML (Attested Markup Language) files
+#
+# A2ML is a lightweight markup format with a typed, formally verified core.
+# Files use the .a2ml extension and are identified by characteristic
+# directives in the document header.
+#
+# Specification: https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc
+# MIME type:     application/vnd.a2ml
+#
+# -------------------------------------------------------------------------
+# Submission instructions (astron/file on GitHub):
+#
+#   1. Fork https://github.com/file/file
+#   2. Add this content to magic/Magdir/a2ml (new file)
+#   3. Run: make check
+#   4. Submit a pull request with:
+#        - This magic file
+#        - A test case in tests/
+#        - Update to doc/magic.man if needed
+#
+#   Maintainer: Christos Zoulas <christos@zoulas.com>
+#   Repository: https://github.com/file/file
+#   Mailing list: file@astron.com (for discussion before PR)
+# -------------------------------------------------------------------------
+
+# A2ML files: detect by SPDX header followed by A2ML content patterns
+# Priority 60 to rank above generic text detection
+
+# Pattern 1: SPDX header identifying A2ML license (common in hyperpolymath repos)
+0       string  #\ SPDX-License-Identifier:
+>&0     regex/128   @(abstract|refs|opaque|requires|fig|table):  A2ML Attested Markup Language document
+!:mime  application/vnd.a2ml
+!:ext   a2ml
+
+# Pattern 2: Document starts with @abstract directive (canonical A2ML opening)
+0       regex/64    \A@abstract:    A2ML Attested Markup Language document
+!:mime  application/vnd.a2ml
+!:ext   a2ml
+
+# Pattern 3: A2ML heading followed by @abstract (spec-conforming document)
+0       regex/256   \A#[^\n]+\n\n@abstract:     A2ML Attested Markup Language document
+!:mime  application/vnd.a2ml
+!:ext   a2ml
+
+# Pattern 4: @opaque directive with language annotation (A2ML code block)
+0       regex/512   @opaque\(lang="[^"]+",\ id="[^"]+"\):      A2ML Attested Markup Language document
+!:mime  application/vnd.a2ml
+!:ext   a2ml
+
+# Pattern 5: @refs block (A2ML reference list)
+0       regex/512   @refs:\n\[1\]   A2ML Attested Markup Language document
+!:mime  application/vnd.a2ml
+!:ext   a2ml
+
+# Pattern 6: AI manifest files (0-AI-MANIFEST.a2ml, AI.a2ml)
+# These typically start with agent-id or pedigree blocks
+0       regex/128   \A(agent-id|pedigree|manifest):     A2ML Attested Markup Language document (AI manifest)
+!:mime  application/vnd.a2ml
+!:ext   a2ml
