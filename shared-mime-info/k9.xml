@@ -4,7 +4,7 @@
 
   shared-mime-info definition for K9 (Self-Validating Components)
 
-  Specification: https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc
+  Specification: https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc
   IANA registration: application/vnd.k9+nickel (vendor tree, RFC 6838)
   Magic number: "K9!" (0x4B 0x39 0x21) at byte offset 0
 

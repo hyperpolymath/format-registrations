@@ -43,18 +43,18 @@
     "LAST\tAen\t\".k9\"",
     "LAST\tAen\t\"K9 format\"",
     "",
-    "LAST\tP31\tQ235557\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
-    "LAST\tP31\tQ24451526\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
+    "LAST\tP31\tQ235557\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc\"",
+    "LAST\tP31\tQ24451526\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc\"",
     "LAST\tP178\tQ125652882\tS854\t\"https://github.com/hyperpolymath\"",
-    "LAST\tP1195\t\".k9\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
-    "LAST\tP1195\t\".k9.ncl\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
-    "LAST\tP1163\t\"application/vnd.k9+nickel\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\"",
+    "LAST\tP1195\t\".k9\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc\"",
+    "LAST\tP1195\t\".k9.ncl\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc\"",
+    "LAST\tP1163\t\"application/vnd.k9+nickel\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc\"",
     "LAST\tP856\t\"https://k9-svc.net\"\tS854\t\"https://k9-svc.net\"",
-    "LAST\tP1324\t\"https://github.com/hyperpolymath/k9-svc\"\tS854\t\"https://github.com/hyperpolymath/k9-svc\"",
-    "LAST\tP2748\t\"PMPL-1.0-or-later\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/LICENSE\"",
-    "LAST\tP571\t+2026-00-00T00:00:00Z/9\tS854\t\"https://github.com/hyperpolymath/k9-svc\"",
-    "LAST\tP348\t\"1.0.0-alpha\"\tS854\t\"https://github.com/hyperpolymath/k9-svc\"",
-    "LAST\tP4152\t\"4B3921\"\tS854\t\"https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc\""
+    "LAST\tP1324\t\"https://github.com/hyperpolymath/standards/tree/main/k9-svc\"\tS854\t\"https://github.com/hyperpolymath/standards/tree/main/k9-svc\"",
+    "LAST\tP2748\t\"PMPL-1.0-or-later\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/k9-svc/LICENSE\"",
+    "LAST\tP571\t+2026-00-00T00:00:00Z/9\tS854\t\"https://github.com/hyperpolymath/standards/tree/main/k9-svc\"",
+    "LAST\tP348\t\"1.0.0-alpha\"\tS854\t\"https://github.com/hyperpolymath/standards/tree/main/k9-svc\"",
+    "LAST\tP4152\t\"4B3921\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc\""
   ],
 
   "statements": {
@@ -62,12 +62,12 @@
       {
         "value": "Q235557",
         "value_label": "file format",
-        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
       },
       {
         "value": "Q24451526",
         "value_label": "configuration file format",
-        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
       }
     ],
     "P178_developer": {
@@ -80,60 +80,60 @@
     "P1195_file_extension": [
       {
         "value": ".k9",
-        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
       },
       {
         "value": ".k9.ncl",
         "note": "Nickel contract variant",
-        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
       }
     ],
     "P1163_media_type": {
       "value": "application/vnd.k9+nickel",
-      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
     },
     "P856_official_website": {
       "value": "https://k9-svc.net",
       "reference": "https://k9-svc.net"
     },
     "P1324_source_code_repository": {
-      "value": "https://github.com/hyperpolymath/k9-svc",
-      "reference": "https://github.com/hyperpolymath/k9-svc"
+      "value": "https://github.com/hyperpolymath/standards/tree/main/k9-svc",
+      "reference": "https://github.com/hyperpolymath/standards/tree/main/k9-svc"
     },
     "P2748_SPDX_license_identifier": {
       "value": "PMPL-1.0-or-later",
-      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/LICENSE"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/LICENSE"
     },
     "P571_inception": {
       "value": "2026",
       "precision": "year",
-      "reference": "https://github.com/hyperpolymath/k9-svc"
+      "reference": "https://github.com/hyperpolymath/standards/tree/main/k9-svc"
     },
     "P348_software_version": {
       "value": "1.0.0-alpha",
       "qualifier_P548": "development version",
-      "reference": "https://github.com/hyperpolymath/k9-svc"
+      "reference": "https://github.com/hyperpolymath/standards/tree/main/k9-svc"
     },
     "P4152_magic_number_hex": {
       "value": "4B3921",
       "note": "ASCII: K9! (0x4B 0x39 0x21) at byte offset 0",
-      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
     },
     "P3381_character_encoding": {
       "value": "Q193537",
       "value_label": "UTF-8",
-      "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
     },
     "P2283_uses": [
       {
         "value_label": "Nickel (programming language)",
         "note": "Look up Q-number for Nickel language; may need to create it",
-        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
       },
       {
         "value_label": "Just (task runner)",
         "note": "Look up Q-number for Just; may need to create it",
-        "reference": "https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc"
       }
     ],
     "P527_has_parts": {

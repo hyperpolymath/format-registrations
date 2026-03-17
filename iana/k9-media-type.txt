@@ -147,7 +147,7 @@ Date: 2026-03-16
 ------------------------------------------------------------------------
 
     K9 SVC Specification (v1.0.0-alpha):
-      https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc
+      https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc
 
     K9 website:
       https://k9-svc.net
@@ -165,7 +165,7 @@ Date: 2026-03-16
     - The Contractile CLI system (must/trust/dust/intend/k9)
 
     Reference implementation:
-      https://github.com/hyperpolymath/k9-svc
+      https://github.com/hyperpolymath/standards/tree/main/k9-svc
 
 ------------------------------------------------------------------------
 10.  Fragment identifier considerations
@@ -252,7 +252,7 @@ References
                <https://www.rfc-editor.org/rfc/rfc6838>.
 
     [K9-SPEC]  Jewell, J., "K9 SVC Specification v1.0.0-alpha", 2026,
-               <https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc>.
+               <https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc>.
 
     [NICKEL]   Tweag, "Nickel Language", 2024,
                <https://nickel-lang.org>.

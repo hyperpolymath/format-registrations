@@ -7,7 +7,7 @@
 # a tiered security model: Kennel (data only), Yard (validation), Hunt
 # (full execution with cryptographic signature).
 #
-# Specification: https://github.com/hyperpolymath/k9-svc/blob/main/SPEC.adoc
+# Specification: https://github.com/hyperpolymath/standards/blob/main/k9-svc/SPEC.adoc
 # MIME type:     application/vnd.k9+nickel
 #
 # -------------------------------------------------------------------------

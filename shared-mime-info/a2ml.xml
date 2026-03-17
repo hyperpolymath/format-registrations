@@ -4,7 +4,7 @@
 
   shared-mime-info definition for A2ML (Attested Markup Language)
 
-  Specification: https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc
+  Specification: https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc
   IANA registration: application/vnd.a2ml (vendor tree, RFC 6838)
 
   Submission instructions (freedesktop.org shared-mime-info):

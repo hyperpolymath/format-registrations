@@ -114,10 +114,10 @@ Date: 2026-03-16
 ------------------------------------------------------------------------
 
     Primary specification (v1.0.0, Stable):
-      https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc
+      https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc
 
     Surface grammar specification (v0, Draft):
-      https://github.com/hyperpolymath/a2ml/blob/main/SPEC.adoc
+      https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC.adoc
 
     Formal verification (Idris2 core):
       https://github.com/hyperpolymath/a2ml/tree/main/src/A2ML
@@ -135,7 +135,7 @@ Date: 2026-03-16
     - AI agent manifest files (0-AI-MANIFEST.a2ml, AI.a2ml)
 
     Reference implementation:
-      https://github.com/hyperpolymath/a2ml
+      https://github.com/hyperpolymath/standards/tree/main/a2ml
 
 ------------------------------------------------------------------------
 10.  Fragment identifier considerations
@@ -231,7 +231,7 @@ References
 
     [A2ML-SPEC]  Jewell, J., "Attested Markup Language Specification
                  v1.0.0", 2026,
-                 <https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc>.
+                 <https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc>.
 
 ------------------------------------------------------------------------
 Submission checklist

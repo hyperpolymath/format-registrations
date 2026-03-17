@@ -6,7 +6,7 @@
 # Files use the .a2ml extension and are identified by characteristic
 # directives in the document header.
 #
-# Specification: https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc
+# Specification: https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc
 # MIME type:     application/vnd.a2ml
 #
 # -------------------------------------------------------------------------

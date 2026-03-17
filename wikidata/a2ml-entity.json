@@ -37,18 +37,18 @@
     "LAST\tAen\t\"A2ML format\"",
     "LAST\tAen\t\".a2ml\"",
     "",
-    "LAST\tP31\tQ235557\tS854\t\"https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc\"",
-    "LAST\tP31\tQ1144560\tS854\t\"https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc\"",
+    "LAST\tP31\tQ235557\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc\"",
+    "LAST\tP31\tQ1144560\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc\"",
     "LAST\tP178\tQ125652882\tS854\t\"https://github.com/hyperpolymath\"",
-    "LAST\tP1195\t\".a2ml\"\tS854\t\"https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc\"",
-    "LAST\tP1163\t\"application/vnd.a2ml\"\tS854\t\"https://github.com/hyperpolymath/a2ml/blob/main/IANA-MEDIA-TYPE-APPLICATION.md\"",
+    "LAST\tP1195\t\".a2ml\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc\"",
+    "LAST\tP1163\t\"application/vnd.a2ml\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/a2ml/IANA-MEDIA-TYPE-APPLICATION.md\"",
     "LAST\tP856\t\"https://a2ml.net\"\tS854\t\"https://a2ml.net\"",
-    "LAST\tP1324\t\"https://github.com/hyperpolymath/a2ml\"\tS854\t\"https://github.com/hyperpolymath/a2ml\"",
-    "LAST\tP277\tQ47541714\tS854\t\"https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc\"",
-    "LAST\tP3966\tQ47541714\tS854\t\"https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc\"",
-    "LAST\tP2748\t\"PMPL-1.0-or-later\"\tS854\t\"https://github.com/hyperpolymath/a2ml/blob/main/LICENSE\"",
-    "LAST\tP571\t+2025-00-00T00:00:00Z/9\tS854\t\"https://github.com/hyperpolymath/a2ml\"",
-    "LAST\tP348\t\"0.7.0\"\tS854\t\"https://github.com/hyperpolymath/a2ml\""
+    "LAST\tP1324\t\"https://github.com/hyperpolymath/standards/tree/main/a2ml\"\tS854\t\"https://github.com/hyperpolymath/standards/tree/main/a2ml\"",
+    "LAST\tP277\tQ47541714\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc\"",
+    "LAST\tP3966\tQ47541714\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc\"",
+    "LAST\tP2748\t\"PMPL-1.0-or-later\"\tS854\t\"https://github.com/hyperpolymath/standards/blob/main/a2ml/LICENSE\"",
+    "LAST\tP571\t+2025-00-00T00:00:00Z/9\tS854\t\"https://github.com/hyperpolymath/standards/tree/main/a2ml\"",
+    "LAST\tP348\t\"0.7.0\"\tS854\t\"https://github.com/hyperpolymath/standards/tree/main/a2ml\""
   ],
 
   "statements": {
@@ -56,12 +56,12 @@
       {
         "value": "Q235557",
         "value_label": "file format",
-        "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
       },
       {
         "value": "Q1144560",
         "value_label": "markup language",
-        "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
       }
     ],
     "P178_developer": {
@@ -73,66 +73,66 @@
     },
     "P1195_file_extension": {
       "value": ".a2ml",
-      "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
     },
     "P1163_media_type": {
       "value": "application/vnd.a2ml",
-      "reference": "https://github.com/hyperpolymath/a2ml/blob/main/IANA-MEDIA-TYPE-APPLICATION.md"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/IANA-MEDIA-TYPE-APPLICATION.md"
     },
     "P856_official_website": {
       "value": "https://a2ml.net",
       "reference": "https://a2ml.net"
     },
     "P1324_source_code_repository": {
-      "value": "https://github.com/hyperpolymath/a2ml",
-      "reference": "https://github.com/hyperpolymath/a2ml"
+      "value": "https://github.com/hyperpolymath/standards/tree/main/a2ml",
+      "reference": "https://github.com/hyperpolymath/standards/tree/main/a2ml"
     },
     "P277_programming_language": {
       "value": "Q47541714",
       "value_label": "Idris 2",
       "note": "Formal core is implemented in Idris2; prototypes in ReScript",
-      "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
     },
     "P3966_programming_language_for_API": {
       "value": "Q47541714",
       "value_label": "Idris 2",
-      "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
     },
     "P2748_SPDX_license_identifier": {
       "value": "PMPL-1.0-or-later",
-      "reference": "https://github.com/hyperpolymath/a2ml/blob/main/LICENSE"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/LICENSE"
     },
     "P571_inception": {
       "value": "2025",
       "precision": "year",
-      "reference": "https://github.com/hyperpolymath/a2ml"
+      "reference": "https://github.com/hyperpolymath/standards/tree/main/a2ml"
     },
     "P348_software_version": {
       "value": "0.7.0",
       "qualifier_P548": "stable version",
-      "reference": "https://github.com/hyperpolymath/a2ml"
+      "reference": "https://github.com/hyperpolymath/standards/tree/main/a2ml"
     },
     "P2378_influenced_by": [
       {
         "value": "Q1193600",
         "value_label": "Markdown",
-        "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
       },
       {
         "value": "Q105765789",
         "value_label": "Djot",
-        "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
       },
       {
         "value": "Q286245",
         "value_label": "AsciiDoc",
-        "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+        "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
       }
     ],
     "P3381_character_encoding": {
       "value": "Q193537",
       "value_label": "UTF-8",
-      "reference": "https://github.com/hyperpolymath/a2ml/blob/main/SPEC-v1.0.adoc"
+      "reference": "https://github.com/hyperpolymath/standards/blob/main/a2ml/SPEC-v1.0.adoc"
     }
   },
 
