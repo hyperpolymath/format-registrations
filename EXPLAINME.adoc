@@ -1,24 +1,183 @@
 // SPDX-License-Identifier: PMPL-1.0-or-later
+// Copyright (c) 2026 Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
 = format-registrations — Show Me The Receipts
 :toc:
+:toclevels: 3
 :icons: font
 
-The README makes claims. This file backs them up.
+The README makes claims about IANA, freedesktop.org, and Wikidata registrations
+for the A2ML and K9 formats. This file shows where the artefacts live, what
+their internal structure is, and what the test suite actually checks.
+
+== Claims from the README
 
 [quote, README]
 ____
-A hyperpolymath project.
+Prepared per RFC 6838 (Media Type Specifications and Registration Procedures).
+Both `application/vnd.a2ml` and `application/vnd.k9` are submitted for IANA
+vendor-tree registration.
 ____
+
+*How it works.* Each `iana/*.txt` file follows the RFC 6838 section layout
+verbatim: Type name, Subtype name, Required parameters, Optional parameters,
+Encoding considerations, Security considerations, Interoperability
+considerations, Published specification, Applications that use this media type,
+Fragment identifier considerations, Restrictions on usage, Author/Change
+controller, Intended usage, Provisional registration. The test suite asserts
+that all five mandatory headings are present in each file and that the
+`application/vnd.*` identifier appears in the body.
+
+*Honest caveat.* Neither registration has been formally approved by IANA as of
+2026-04-04. The files in `iana/` are draft submissions at Revision 2. The K9
+registration deliberately omits the `+nickel` structured syntax suffix because
+that suffix is not in the IANA Structured Syntax Suffixes registry; this is
+called out in a prominent NOTE block in `iana/k9-media-type.txt`.
+
+*Critical path.* `iana/a2ml-media-type.txt` → submitted to
+`https://www.iana.org/form/media-types` → on approval, `application/vnd.a2ml`
+becomes resolvable via the IANA registry.
+
+[quote, README]
+____
+File magic patterns enable `file(1)` to identify A2ML and K9 files by
+content, not just by extension.
+____
+
+*How it works.* `file-magic/a2ml.magic` defines six `file(1)` magic patterns
+at priority 60, covering: SPDX header + A2ML directive on the same file,
+`@abstract:` at offset 0, heading-then-`@abstract:`, `@opaque(lang=...,id=...)`
+directive, `@refs:` block, and `agent-id`/`pedigree` manifest prefixes. Each
+pattern is followed by `!:mime application/vnd.a2ml` and `!:ext a2ml` so that
+`file --mime-type` and extension inference both work. Submission target is
+`https://github.com/file/file` (astron/file).
+
+*Honest caveat.* Magic patterns have not been merged into the upstream `file`
+project. Until they are, the patterns work only via a local `magic.mgc` compile
+(`file -m file-magic/a2ml.magic <target>`).
+
+*Critical path.* `file-magic/a2ml.magic` → `file -C -m .` → test against
+sample A2ML file → submit PR to astron/file.
+
+== How It Is Checked
+
+The test suite lives in `tests/validate.test.ts` and runs under Deno:
+
+[source,bash]
+----
+deno test --allow-read tests/
+----
+
+Test categories, in order:
+
+* *Unit* — file existence: all four directories (`iana/`, `file-magic/`,
+  `shared-mime-info/`, `wikidata/`) contain the expected A2ML and K9 files.
+* *Smoke* — content spot checks: `application/vnd.a2ml` present in IANA text,
+  magic file references `a2ml`, XML contains `<mime-type>`, Wikidata JSON
+  parses.
+* *Contract* — RFC 6838 completeness: all five mandatory section headings
+  present in the IANA registration; K9 registration also references RFC 6838.
+* *Aspect* — consistency: SPDX headers in IANA files; XML files have closing
+  tags.
+* *Property* — invariants: all JSON files parse cleanly; all text files are
+  non-empty.
+* *E2E* — round-trip: IANA text re-parsed to confirm `Type name`, `Subtype
+  name`, and `application/vnd.a2ml` sections survive a read-parse cycle.
+* *Benchmark* — baseline: all four files read in < 500 ms; IANA registration
+  is > 2000 characters (guards against accidental truncation).
+
+== Dogfooded Across The Account
+
+[cols="2,3", options="header"]
+|===
+| Consumer | How it uses this repo
+
+| `a2ml-showcase`
+| Links to the IANA registration as the canonical media type reference for all
+  A2ML examples.
+
+| `k9-showcase`
+| Cites `application/vnd.k9` (derived from `iana/k9-media-type.txt`) when
+  explaining K9's place in the ecosystem.
+
+| `tree-sitter-a2ml`
+| Uses the file extension list from `shared-mime-info/a2ml.xml` to keep its
+  own `queries/` consistent with the registered globs (`*.a2ml`,
+  `0-AI-MANIFEST.a2ml`, `AI.a2ml`).
+
+| `tree-sitter-k9`
+| Same pattern: `shared-mime-info/k9.xml` is the authoritative glob source.
+
+| `standards`
+| The A2ML and K9 spec documents reference this repo for their MIME type
+  definitions.
+
+| `hypatia-scan.yml` (CI across all repos)
+| The shared-mime-info XMLs are cited in Hypatia's format-detection rule
+  module to validate that A2ML manifests carry the correct content signature.
+|===
 
 == File Map
 
-[cols="1,2"]
+[cols="2,3", options="header"]
 |===
 | Path | What's There
 
-| `test(s)/` | Test suite
+| `iana/a2ml-media-type.txt`
+| RFC 6838-structured registration draft for `application/vnd.a2ml`.
+  Revision 2 (supersedes 2026-03-16). Ready to submit to IANA.
+
+| `iana/k9-media-type.txt`
+| RFC 6838-structured registration draft for `application/vnd.k9`.
+  Contains an explicit NOTE explaining why `+nickel` suffix was dropped.
+
+| `file-magic/a2ml.magic`
+| Six `file(1)` magic patterns for A2ML files. Priority 60. Includes
+  submission instructions for astron/file as inline comments.
+
+| `file-magic/k9.magic`
+| `file(1)` magic patterns for K9 files. Matches `K9!` preamble and
+  `---` YAML-style block openers.
+
+| `shared-mime-info/a2ml.xml`
+| freedesktop.org shared-mime-info XML for `application/vnd.a2ml`. Includes
+  glob patterns, content-based magic rules, and multilingual `<comment>`
+  elements (en, de, fr, es, ja). Submission target: freedesktop.org GitLab.
+
+| `shared-mime-info/k9.xml`
+| Same structure for K9.
+
+| `wikidata/a2ml-entity.json`
+| Wikidata QuickStatements payload (JSON) for creating an A2ML entity.
+  Includes API payload, QuickStatements commands, and manual creation
+  instructions as inline `_comment` entries.
+
+| `wikidata/k9-entity.json`
+| Same for K9.
+
+| `tests/validate.test.ts`
+| Deno test suite (unit, smoke, contract, aspect, property, E2E, benchmark).
+  Run with `deno test --allow-read tests/`.
+
+| `tests/fuzz/`
+| Fuzz corpus directory for property-based edge-case testing.
+
+| `Justfile`
+| `just` task runner: `default`, `doctor`, `tour`, `help-me`.
+
+| `deno.json`
+| Deno task config: `"test": "deno test --allow-read tests/"`.
+
+| `setup.sh`
+| First-run dependency check.
+
+| `contractiles/`
+| Contractile recipe stubs (RSR standard).
+
+| `0-AI-MANIFEST.a2ml`
+| AI agent manifest for this repo (entry point for AI tooling).
 |===
 
 == Questions?
 
-Open an issue or reach out directly — happy to explain anything in more detail.
+Open an issue on GitHub or reach out to Jonathan D.A. Jewell
+<j.d.a.jewell@open.ac.uk> — happy to explain anything in more detail.
