@@ -1,0 +1,38 @@
+; SPDX-License-Identifier: PMPL-1.0-or-later
+; Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+
+(state
+  (metadata
+    (version "1.0")
+    (updated "2026-04-04")
+    (crg-grade "C"))
+
+  (project-context
+    (name "format-registrations")
+    (type "format-registry")
+    (purpose "Formal registrations for A2ML and K9 across IANA, file-magic, MIME-info, and Wikidata")
+    (status "stable"))
+
+  (current-position
+    (completion-percentage 95)
+    (recent-achievement "Implemented CRG Grade C test suite")
+    (test-status "all-passing"))
+
+  (route-to-mvp
+    (phases
+      (("Phase 1" "IANA RFC 6838 registrations" "COMPLETE"))
+      (("Phase 2" "Format database entries (libmagic, MIME, Wikidata)" "COMPLETE"))
+      (("Phase 3" "Test coverage to Grade C" "COMPLETE"))))
+
+  (blockers-and-issues
+    (active-blockers
+      ("IANA media type submissions pending approval" "external-dependency"))
+    (resolved-issues
+      ("Test coverage added" "2026-04-04")))
+
+  (critical-next-actions
+    (next "Monitor IANA submission status")
+    (next "Update registrations if RFC changes required"))
+
+  (session-history
+    (("2026-04-04" "Added CRG C test suite (21 tests, all passing)"))))
